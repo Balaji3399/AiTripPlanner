@@ -27,9 +27,9 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <img src="/logo.svg" className="text-2xl font-bold" />
         <nav className="hidden md:flex space-x-6 ">
-          <a href="#" className="text-[black] font-bold hover:">Home</a>
-          <a href="#" className="text-[black] font-bold hover">How it Works</a>
-          <a href="#" className="text-[black] font-bold hover">Testimonials</a>
+          <a href="home" className="text-[black] font-bold hover:">Home</a>
+          <a href="howItWorks" className="text-[black] font-bold hover">How it Works</a>
+          <a href="testimonials" className="text-[black] font-bold hover">Testimonials</a>
           <a href="#" className="text-[black] font-bold hover">Contact</a>
         </nav>
         <Button className="hidden md:flex">Sign In</Button>
@@ -43,9 +43,9 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col space-y-2 mt-4 md:hidden"
         >
-          <a href="#" className=" text-[black] hover:">Home</a>
-          <a href="#" className="text-[black] hover">How it Works</a>
-          <a href="#" className="text-[black] hover">Testimonials</a>
+          <a href="home" className=" text-[black] hover:">Home</a>
+          <a href="howItWorks" className="text-[black] hover">How it Works</a>
+          <a href="testimonials" className="text-[black] hover">Testimonials</a>
           <a href="#" className="text-[black] hover">Contact</a>
           <Button className="w-[100px]" >Sign In</Button>
         </motion.nav>
