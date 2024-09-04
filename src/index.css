@@ -131,3 +131,29 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+
+
+.background {
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background-size: 200% 200%;
+  animation: circularMotion 4.5s linear infinite;
+}
+
+@keyframes circularMotion {
+  0% {
+    background-position: 50% 0%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  75% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
