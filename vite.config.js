@@ -14,4 +14,18 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Adding this to ensure fallback for all routes
+  build: {
+    rollupOptions: {
+      input: './index.html',
+    },
+  },
+  server: {
+    // Ensure that history fallback is enabled for SPA routing in dev
+    historyApiFallback: true,
+  },
+  preview: {
+    // Ensure the history fallback is also enabled during preview
+    historyApiFallback: true,
+  }
 });

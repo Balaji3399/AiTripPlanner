@@ -18,15 +18,15 @@ const router = createBrowserRouter ([
     element:<CreateTrip/>
   } ,
   {
-    path : 'home' ,
+    path : '/home' ,
     element : <App/>
   },
   {
-    path : 'testimonials' ,
+    path : '/testimonials' ,
     element : <Testimonials />
   },
   {
-    path: 'howItWorks' ,
+    path: '/howItWorks' ,
     element : <HowItWorks />
   }
 ]) 
