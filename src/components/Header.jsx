@@ -23,7 +23,7 @@ const Header = () => {
     };
   }, []);
   return (
-    <header className={`text-white p-4 fixed w-full z-10 ${isScrolled || isMenuOpen? 'bg-white shadow-md ': 'bg-transparent'}`}>
+    <header className={`text-white p-4 fixed w-full z-10 ${isScrolled || isMenuOpen? 'bg-white shadow-md ': 'bg-transparent '}`}>
       <div className="container mx-auto flex justify-between items-center">
         <img src="/logo.svg" className="text-2xl font-bold" />
         <nav className="hidden md:flex space-x-6 ">
