@@ -83,17 +83,23 @@ function CreateTrip() {
   
     let parsedTripInfo;
     try {
-     
+      // Clean up the tripInfo string
       let cleanedTripInfo = tripInfo
-        .replace(/```json|```/g, '')   
-        .replace(/\n/g, '')            
-        .trim();                      
-
+        .replace(/```json|```/g, '')   // Remove any ```json and ```
+        .replace(/\n/g, '')            // Remove newlines
+        .trim();                       // Trim leading and trailing whitespace
+  
+      // Debug: Log the cleaned string
       // console.log('Cleaned Trip Info:', cleanedTripInfo);
   
+      // Remove non-JSON text after the valid JSON content
       const jsonEndIndex = cleanedTripInfo.lastIndexOf('}');
       cleanedTripInfo = cleanedTripInfo.substring(0, jsonEndIndex + 1);
-    
+  
+      // Debug: Log the final JSON string
+      // console.log('Final JSON String:', cleanedTripInfo);
+  
+      // Parse the cleaned JSON string
       parsedTripInfo = JSON.parse(cleanedTripInfo);
     } catch (error) {
       console.error('Error parsing tripInfo JSON:', error);
