@@ -10,6 +10,7 @@ import HowItWorks from './components/HowItWorks.jsx'
 import Testimonials from './components/Testimonials.jsx'
 import { Toaster } from './components/ui/toaster.jsx'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import Viewtrip from './view-trip/[tripId]/index.jsx'
 
 const router = createBrowserRouter ([
   { path : '/' , 
@@ -30,6 +31,10 @@ const router = createBrowserRouter ([
   {
     path: '/howItWorks' ,
     element : <HowItWorks />
+  },
+  {
+    path : '/view-trip/:tripId' ,
+    element : <Viewtrip />
   }
 ]) 
 createRoot(document.getElementById('root')).render(

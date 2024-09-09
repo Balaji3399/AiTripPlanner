@@ -3,7 +3,7 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { AI_PROMPT, budgetOptions, options } from '@/components/constants/options';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from '@/hooks/use-toast';
 import { chatSession } from '@/service/AiModel';
 import { Dialog , DialogHeader , DialogDescription , DialogContent} from '@/components/ui/dialog';
@@ -15,12 +15,14 @@ import { db } from '@/service/firebaseConfig';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function CreateTrip() {
+
   const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
   const [place, setPlace] = useState(null);
   const [formData, setFormData] = useState({});
   const [openDialogueBox , setOpenDialogueBox] = useState(false) ;
   const [load , setLoad] = useState(false) ;
 
+  const router = useNavigate() ;
   const handleInput = (name, value) => {
     setFormData({
       ...formData,
@@ -50,7 +52,12 @@ function CreateTrip() {
       return ;
     }
       // console.log(formData) ;
+      toast({
+        variant : 'destructive' ,
+        title : "Please wait , Generating Trip"
+      })
       setLoad(true) ;
+
       const Prompt = AI_PROMPT
       .replace('{location}' , formData?.location?.label)
       .replace('{totalDays}' , formData?.noOfDays)
@@ -70,18 +77,45 @@ function CreateTrip() {
   })
 
   const AiTrip = async (tripInfo) => {
-    setLoad(true) ;
-    const user = JSON.parse(localStorage.getItem('user')) ;
-    const id = Date.now().toString() ;
-    await setDoc(doc(db , 'AiTrips' , id) , {
-      userChoices : formData ,
-      tripInfo : tripInfo,
-      userEmail : user?.email ,
-      id : id 
-    })
+    setLoad(true);
+    const user = JSON.parse(localStorage.getItem('user'));
+    const id = Date.now().toString();
+  
+    let parsedTripInfo;
+    try {
+     
+      let cleanedTripInfo = tripInfo
+        .replace(/```json|```/g, '')   
+        .replace(/\n/g, '')            
+        .trim();                      
 
-    setLoad(false) ;
+      // console.log('Cleaned Trip Info:', cleanedTripInfo);
+  
+      const jsonEndIndex = cleanedTripInfo.lastIndexOf('}');
+      cleanedTripInfo = cleanedTripInfo.substring(0, jsonEndIndex + 1);
+    
+      parsedTripInfo = JSON.parse(cleanedTripInfo);
+    } catch (error) {
+      console.error('Error parsing tripInfo JSON:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error generating trip. Please try again.',
+      });
+      setLoad(false);
+      return;
+    }
+    
+    await setDoc(doc(db, 'AiTrips', id), {
+      userChoices: formData,
+      tripInfo: parsedTripInfo,
+      userEmail: user?.email,
+      id: id,
+    });
+  
+    setLoad(false);
+    router('/view-trip/' + id);
   }
+  
 
   const getUserData = (tokenInfo) => {
     axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?acess_token=${tokenInfo?.access_token}` , {
