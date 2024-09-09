@@ -1,7 +1,17 @@
+import { GetPlaceDetails } from '@/service/GlobalAPI'
 import React from 'react'
 /* eslint-disable react/prop-types */
 
 function Info({trip}) {
+
+  const GetplacePhoto = async () => {
+    const data = {
+      textQuery : trip?.userChoices?.location.label 
+    }
+    const res = await GetPlaceDetails(data).then(response => {
+      console.log(response.data) ;
+    })
+  }
   return (
     <div className='pt-10'>
         <img src="https://i0.wp.com/picjumbo.com/wp-content/uploads/breathtaking-bali-nature-free-photo.jpg?w=600&quality=80" alt="" className='w-full h-[350px] rounded object-cover' />
