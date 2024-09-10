@@ -3,6 +3,8 @@ import PlacesCard from './PlacesCard'
 /* eslint-disable react/prop-types */
 
 function Places({trip}) {
+
+    
   return (
     <div>
         <h2 className='font-bold text-lg'>Near By Places to Visit</h2>
