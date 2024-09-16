@@ -28,7 +28,7 @@
             role:'user' ,
             parts : [
                 {
-                    text : 'Generate Travel Plan for location : Las vegas , for three days for couple with a cheap budget , Give me a Hotels options list with HotelName , Hotel address , price , hotel image url , geo coordinates , rating , descriptions and suggest itinerary with placeName , place details , place Image Url , Geo Coordinated , ticket pricing , rating , travel time to each of the location for 3 days with each day plan with best time to visit in JSON format. '             }
+                    text : 'Generate Travel Plan for location : Las vegas , for three days for couple with a cheap budget , Give me a Hotels options list with HotelName , Hotel address , price , hotel image url , geo coordinates , rating , descriptions and suggest itinerary with placeName , place details , place Image Url , Geo Coordinated , ticket pricing , rating , travel time to each of the location for 3 days with each day plan with best time as bestTime in JSON format. '             }
             ],
         },
         {

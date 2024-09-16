@@ -71,6 +71,7 @@ function CreateTrip() {
       setLoad(false) ;
       AiTrip(result?.response?.text()) ;
   }
+  
   const login = useGoogleLogin ({
     onSuccess:(response) => getUserData(response), 
     onError : (err) => console.log(err) 
