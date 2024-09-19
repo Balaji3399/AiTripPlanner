@@ -19,11 +19,12 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
+          <h4 className="text-lg font-semibold mb-4">Connect</h4>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-purple-200"><Twitter /></a>
-            <a href="#" className="hover:text-purple-200"><Github /></a>
-            <a href="#" className="hover:text-purple-200"><Linkedin /></a>
+            <a href="https://github.com/Balaji3399" target='_blank' className="hover:text-purple-200"><Github /></a>
+            <a href="https://www.linkedin.com/in/a-balaji-56a533253/
+" target='_blank' className="hover:text-purple-200"><Linkedin /></a>
           </div>
         </div>
       </div>
